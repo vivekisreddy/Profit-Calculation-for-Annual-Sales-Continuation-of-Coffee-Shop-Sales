@@ -1,0 +1,96 @@
+Homework 3 Pseudocode 
+
+The main function analysis.c was provided to all students as a starter code by the professor. The only addition to make 
+for the main function is calling the functions
+
+
+Main function -> analysis.c 
+Define ITEMS as 51 
+Creates two arrays; one 50 X 7 (month_data) and 50 X 2 (money)
+The month_data array contains 51 rows of item and 6 columns which are the 6 months from Jan-Jun with the first column being the ItemCode
+The money array contains 51 rows of items and the cost and sales price of each item
+Create a for-loop that loops through all four months 
+Create a switch statement that opens each of the month_data files from Jan-June
+Load the sales data by reading the ouput file 'Costs.txt' 
+Set money[new_item][0] to purchase which is the sale price 
+Set money[new_item][1] to cost 
+Call the three functions; get_totals, get_profits, top_earner
+
+
+sales_report.c 
+
+Function 1 -> get_totals
+Create Total_sales.txt that contains a list of each item and the total number of sales for the item
+The suggested function prototype was void get_totals(int[][7], int, int)
+First we need to create a pointer to file 
+Use the pointer to open an output file 'Total_sales.txt' in which you will write in 
+This function uses the month_data array, int rows (51), and int columns (7)
+Create a nested for-loop 
+The first for-loop will used to loop through all 51 rows which contains the item
+Next declare the variable used for storing the total number of sales to 0 so it can be used later 
+The second for-loop will be used for looping through all the columns starting from 1 and not 0 because 0 is the ItemCode 
+Inside the second for-loop set the variable total_sales to itself and add the row and column in the 50 X 7 array 
+Outside of the second for-loop, create an fprintf statement 
+Inside of the fprintf statement, include the pointer file, the appropriate format specifiers, the 50 X 7 month_data array, 
+and total_sales which is the variable that stored the total number of sales for each item 
+Then close the output file 
+
+
+Function 2 -> get_profits
+Create Profits.txt that contains the total sales, total cost, amount earned and profit for each item (cost – sales price)*items sold
+The suggested function prototype was void get_profits(int[][7], int, int, float[][2])
+Create a new pointer file 
+Open a new output file 'Profits.txt' 
+Declare the total_sales variable so it can be used 
+Declare the revenue variable as float 
+This function uses the month_data array, money array int rows (51), and int columns (7)
+Create a fprintf statement to print the label for the list in the output file 
+The first for-loop will used to loop through all 51 rows which contains the item
+Next declare the variable used for storing the total number of sales to 0 so it can be used later 
+The second for-loop will be used for looping through all the columns starting from 1 and not 0 because 0 is the ItemCode 
+Inside the second for-loop set the variable total_sales to itself and add the row and column in the 50 X 7 array 
+Set the revenue variable equal to (cost - sales price)* total number of sales for each item (total_sales)
+The cost and sales price are in the money array (50 X 2) and you multiply each by the total_sales
+Outside of the second for loop, create an fprintf statement 
+Inside of the fprintf statement, include the item (i), total number of sales, cost, sales price, and revenue
+Close the output file 
+
+
+Function 3 -> top_earner 
+Create Top_earners.txt which should list the 10 items with the highest revenue
+The suggested function prototype was void top_earner(int[][7], int, int, float[][2])
+Create a new pointer file 
+Open a new output file 'Top_earners.txt
+Declare the total_sales variable so it can be used 
+Declare the revenue variable as float 
+Declare a variable to store the item from the month_data array (top_item) and set it to 0 
+Declare a variable to store the current highest revenue (max_rev) and set it to 0 
+Declare a variable to store the current number of sales and set it to 
+This function uses the month_data array, money array int rows (51), and int columns (7)
+Create a fprintf statement to print the label for the list in the output file 
+Create a for-loop that will loop through 10 times to get the top 10 highest revenue values
+Inside of this for-loop, create or use the nested for-loop from function 1 & function 2 
+The first for-loop will used to loop through all 51 rows which contains the item
+Next declare the variable used for storing the total number of sales to 0 so it can be used later 
+The second for-loop will be used for looping through all the columns starting from 1 and not 0 because 0 is the ItemCode 
+Inside the second for-loop set the variable total_sales to itself and add the row and column in the 50 X 7 array 
+Set the revenue variable equal to (cost - sales price)* total number of sales for each item (total_sales)
+Outside of the second for-loop, create an if statement 
+The if statement will need to check for the current highest revenue from all of the item 
+Set the variable to the current max revunue
+Set the top_item variable to the item (i)
+Set the max_sales variable to the sales for that item 
+After the if statement, create an fprintf statement 
+Inside of the fprintf statement, print the item, sales, and the max revenue
+After, set the money[][] array to 0, so the max revenue changes, and the iteration will find the next highest revenue until it gets to the top 10 highest revenue values
+Set max_rev back to 0 so it can be used again the iteration to get the next max revenue
+This will give the top 10 highest revenue values
+Close the output file 
+
+Header File -> functions.h 
+Include the three function prototypes for get_totals, get_profits, and top_earner
+The header fill will make sure all your program will make use of all your functions to run the program 
+
+The makefile will used to make sure that there are no warnings in the program and 
+make sure all the source.c files and header.h files compile together properly 
+and the executable is analysis.exe 
